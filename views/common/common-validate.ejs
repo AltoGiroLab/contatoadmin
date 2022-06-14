@@ -1,0 +1,11 @@
+<script>
+	function validarCampo(value, user, pass) {
+		if (value === undefined | value === '') {
+			const message = `Favor informar ${user} "${pass}"`;
+			alert(message);
+			throw Error(message);
+		}
+		window.location.href = "/";
+	}
+	
+</script>

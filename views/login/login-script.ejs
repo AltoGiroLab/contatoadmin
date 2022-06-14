@@ -1,0 +1,49 @@
+<script>
+
+    function pegarLogin() {
+
+        const inputUser = document.getElementById('inputUser').value;
+        const inputPass = document.getElementById('inputPass').value;
+
+        console.log(inputUser)
+        console.log(inputPass)
+
+        const objLogin = {
+            user: inputUser,
+            pass: inputPass,
+        };
+
+        return objLogin;
+    }
+
+    function execLogin() {
+
+        const objLogin = pegarLogin();
+
+        console.log(objLogin);
+        
+        requestPost(urlBase, "login", objLogin, (json) => {
+            console.log(requestPost);
+            execLoginResult(json);
+        });
+    }
+
+    function execLoginResult(json) {
+
+        const objLoginResult = JSON.parse(json);
+
+        console.log(json);
+
+        if (objLoginResult.message) {
+            alert(objLoginResult.message);
+
+        }
+        if (objLoginResult.auth === true) {
+            console.log(objLoginResult);
+            window.sessionStorage.setItem("token", objLoginResult.token);
+            console.log("teste")
+            window.location.href = "/";
+        }
+    }
+
+</script>

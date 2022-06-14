@@ -1,0 +1,307 @@
+<script>
+    // table filter
+    $(document).ready(function () {
+        $("#inputSearch").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tableList tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    const _tableList =
+        "<table id='tableList' style='cursor: pointer;' class='table table-hover scrollbar-primary'>" +
+        "    <thead>" +
+        "        <tr>" +
+        "            <th class='tab-col' id='tab-code-col'>Código</th>" +
+        "            <th class='tab-col' id='tab-city-col'>Cidade</th>" +
+        "            <th class='tab-col' id='tab-state-col'>Estado</th>" +
+        "            <th class='tab-col' id='tab-mall-col'>Shopping</th>" +
+        "            <th class='tab-col' id='tab-address-col'>Endereço</th>" +
+        "            <th class='tab-col' id='tab-email-col'>Email</th>" +
+        "            <th class='tab-col' id='tab-manager-col'>Gerente</th>" +
+        "            <th class='tab-col' id='tab-phone-col'>Celular/Fixo</th>" +
+        "            <th class='tab-col' id='tab-number-col'>Número</th>" +
+        "            <th class='tab-col' id='tab-company-col'>Operadora</th>" +
+        "            <th class='tab-col' id='tab-seller-col'>Vendedor</th>" +
+        "            <th class='tab-col' id='tab-face-col'>Facebook</th>" +
+        "            <th class='tab-col' id='tab-insta-col'>Instagram</th>" +
+        "        </tr>" +
+        "    </thead>" +
+        "    <tbody>" +
+        "{bodys}" +
+        "    </tbody>" +
+        "</table>";
+    const _tableItem =
+        "<tr>" +
+        "    <td id='tab-code-row'>{code}</td>" +
+        "    <td id='tab-city-row'>{city}</td>" +
+        "    <td id='tab-state-row'>{state}</td>" +
+        "    <td id='tab-mall-row'>{mall}</td>" +
+        "    <td id='tab-address-row'>{address}</td>" +
+        "    <td id='tab-email-row'>{email}</td>" +
+        "    <td id='tab-manager-row'>{manager}</td>" +
+        "    <td id='tab-number-row'>{number}</td>" +
+        "    <td id='tab-name-row'>{name}</td>" +
+        "    <td id='tab-company-row'>{company}</td>" +
+        "    <td id='tab-seller-row'>{seller}</td>" +
+        "    <td id='tab-face-row'>{facebook}</td>" +
+        "    <td id='tab-insta-row'>{instagram}</td>" +
+        "</tr>";
+
+    var contactQuantity = 1;
+
+    const _contactLayout =
+        "<div id = inputList>" +
+        "<input name = inputName{seq} />" +
+        "<input name = inputNumber{seq} />" +
+        "<input name = inputCompany{seq} />" +
+        "<input name = inputSeller{seq} />" +
+        "</div>";
+
+    const urlBase = "http://localhost:3020/v1/contato"
+
+    let idContato = undefined;
+    let count = listAllJson();
+
+    var current_page = 1;
+    var records_per_page = 6;
+    var total_pages = 1;
+
+    function adjustTotalPages(count) {
+        var resto_pages = count % records_per_page
+        total_pages = parseInt(count / records_per_page) + (resto_pages != 0 ? 1 : 0)
+    }
+
+    function takeModel() {
+        var model = {
+            code: document.getElementById("inputCode").value,
+            city: document.getElementById("inputCity").value,
+            state: document.getElementById("inputState").value,
+            mall: document.getElementById("inputMall").value,
+            address: document.getElementById("inputAddress").value,
+            email: document.getElementById("inputEmail").value,
+            manager: document.getElementById("inputManager").value,
+            facebook: document.getElementById("inputFace").value,
+            instagram: document.getElementById("inputInsta").value,
+            phones: {
+                name: document.getElementById("inputName").value,
+                number: document.getElementById("inputNumber").value,
+                company: document.getElementById("inputCompany").value,
+                seller: document.getElementById("inputSeller").value,
+            }
+        }
+        return model;
+    }
+
+    function setModel(model) {
+        idContato = model ? model._id : undefined;
+        document.getElementById("inputCode").value = model ? model.code : "";
+        document.getElementById("inputCity").value = model ? model.city : "";
+        document.getElementById("inputState").value = model ? model.state : "";
+        document.getElementById("inputMall").value = model ? model.mall : "";
+        document.getElementById("inputAddress").value = model ? model.address : "";
+        document.getElementById("inputEmail").value = model ? model.email : "";
+        document.getElementById("inputManager").value = model ? model.manager : "";
+        document.getElementById("inputFace").value = model ? model.facebook : "";
+        document.getElementById("inputInsta").value = model ? model.instagram : "";
+        document.getElementById("inputName").value = model ? model.phones.name : "";
+        document.getElementById("inputNumber").value = model ? model.phones.number : "";
+        document.getElementById("inputCompany").value = model ? model.phones.company : "";
+        document.getElementById("inputSeller").value = model ? model.phones.seller : "";
+        return model;
+    }
+
+    function clear() {
+        console.log('limpar')
+        setModel(null);
+        document.getElementById("divList").innerHTML = '';
+        document.getElementById("inputState").innerHTML = '';
+        document.getElementById("inputCompany").innerHTML = '';
+        document.getElementById("inputSearch").innerHTML = '';
+        listJson();
+    }
+
+    function List() {
+        console.log('listar')
+        var node = `/filter`
+        execRequest("GET", node, null, (json) => {
+            var objContato = JSON.parse(json)
+            console.log(`objeto: ${JSON.stringify(objContato)}`)
+            loadList(objContato.agcontato)
+        })
+    }
+
+    function findByFilter() {
+        var node = `/getall`
+    }
+
+    function fListFilter(pesquisa, searchList) {
+        var result = true;
+
+        searchList.map(item => {
+            if (pesquisa.city.indexOf(item) < 0 &
+                pesquisa.state.indexOf(item) < 0) {
+                result = false;
+            }
+        });
+
+        return result;
+    }
+
+    /*function model() {
+        var search = document.getElementById("inputSearch").value; // pega o valor do campo search
+        var node = `/getall` // acessa o point de dados da api
+        execRequest("GET", node, null, (json) => { // função que executa a request
+            var objAgcontato = JSON.parse(json) // transforma os dados em json
+            console.log(`valor coletado: ${search}`) // mostra os dados coletados no input search
+            console.log(`dados da lista: ${JSON.stringify(objAgcontato)}`) // mostra o objeto com os dados obtidos na pesquisa
+            var searchList = search.split(' ');
+            console.log(`depois de usado split: ${searchList}`)
+
+            var listResult = objAgcontato.agcontato.filter(pessoa => fListFilter(pessoa, searchList));
+            loadList(listResult)
+            console.log(`list result: ${JSON.stringify(listResult)}`);
+        })
+    }*/
+
+    function listJson() {
+        var node = `/pagination?page=${current_page}&limit=${records_per_page}`
+        execRequest("GET", node, null, (json) => {
+            var objAgcontato = JSON.parse(json)
+            console.log(`lista de objetos da página${json}`)
+            loadList(objAgcontato)
+        })
+    }
+
+    function listAllJson() {
+        var node = `/getall`
+        execRequest("GET", node, null, (json) => {
+            var objAgcontato = JSON.parse(json)
+            var count = Object.keys(objAgcontato.agcontato).length
+            adjustTotalPages(count)
+        })
+    }
+
+    function search() {
+        console.log('buscar')
+        var code = document.getElementById("inputCode").value;
+        //var status = document.getElementById("inputStatus").value;
+        //if (!status) { //criar outras condições de pesquisa aqui!!!
+        var node = `/findbycode/${code}`
+        execRequest("GET", node, null, (json) => {
+            var objContato = JSON.parse(json)
+            console.log('objContato')
+            objContato?.agcontato?.map(item => {
+                setModel(item)
+            })
+        })
+        return
+    }
+
+    function loadList(agcontatos) {
+        var tableItems = "";
+        console.log(`contatos: ${JSON.stringify(agcontatos)}`)
+        agcontatos?.map(agcontato => {
+            var tableItem = _tableItem
+                .replace("{code}", agcontato.code)
+                .replace("{city}", agcontato.city)
+                .replace("{state}", agcontato.state)
+                .replace("{mall}", agcontato.mall)
+                .replace("{address}", agcontato.address)
+                .replace("{email}", agcontato.email)
+                .replace("{manager}", agcontato.manager)
+                .replace("{facebook}", agcontato.facebook)
+                .replace("{instagram}", agcontato.instagram)
+                .replace("{number}", agcontato.phones.number)
+                .replace("{name}", agcontato.phones.name)
+                .replace("{company}", agcontato.phones.company)
+                .replace("{seller}", agcontato.phones.seller)
+            tableItems += tableItem;
+        })
+        var tableList = _tableList
+            .replace("{bodys}", tableItems);
+        document.getElementById("divList").innerHTML = tableList;
+        if (tableList) {
+            setListClick()
+        }
+    }
+
+    function save() {
+        console.log('salvar');
+        var rest = idContato ? "PUT" : "POST";
+        var node = idContato ? `/${idContato}` : "";
+        var model = takeModel()
+        execRequest(rest, node, model, (json) => {
+            alert('gravação efetuada com sucesso');
+        })
+    }
+
+    function salvaListaContato() {
+        console.log('salva lista contato');
+        var rest = idContato ? "PUT" : "POST";
+        var node = idContato ? `/${idContato}` : "";
+        var model = takeModel()
+        execRequest(rest, node, model, (json) => {
+            alert('lista gravada');
+        })
+    }
+
+    function GetCellValues(rowIndex, colIndex) {
+        var table = document.getElementById('tableList');
+        for (var r = 0, n = table.rows.length; r < n; r++) {
+            for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+                if (r == rowIndex && c == colIndex) {
+                    return table.rows[r].cells[c].innerHTML;
+                }
+            }
+        }
+    }
+
+    function execRequest(rest, node, data, action) {
+        var site = `${urlBase}${node}`;
+        console.log(`${rest} - ${site}`);
+        const request = new XMLHttpRequest()
+        request.open(rest, site)
+        if (data) {
+            console.log("data ->");
+            console.log(data);
+            request.setRequestHeader("Content-type", "application/json")
+            request.send(JSON.stringify(data))
+        }
+        else {
+            request.send()
+        }
+        request.onload = function () {
+            console.log(this.responseText)
+            action(this.responseText)
+        }
+    }
+
+    function setListClick() {
+        if (!document.getElementsByTagName || !document.createTextNode)
+            return;
+        var rows = document.getElementById('tableList')
+            .getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+        for (i = 0; i < rows.length; i++) {
+            rows[i].onclick = function () {
+                var agcontato = GetCellValues(this.rowIndex, 0)
+                document.getElementById('inputCode').value = agcontato
+                search();
+            }
+        }
+    }
+
+    function deleted() {
+        console.log('excluir')
+        if (!idContato) {
+            return;
+        }
+        var node = `/${idContato}`;
+        console.log(node)
+        execRequest("DELETE", node, null, (json) => {
+            alert('exclusao efetuada com sucesso')
+        })
+    }
+
+</script>

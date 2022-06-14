@@ -1,0 +1,28 @@
+{
+  "name": "front-reccorpus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rotas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.19.2",
+    "devtools": "^7.17.0",
+    "dotenv": "^16.0.0",
+    "dotenv-safe": "^8.2.0",
+    "ejs": "^3.1.8",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "jquery": "^3.6.0",
+    "json": "^11.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "token": "^0.1.0",
+    "web": "^0.0.2"
+  }
+}
