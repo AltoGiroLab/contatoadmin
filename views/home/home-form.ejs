@@ -181,7 +181,7 @@
 
         <section class="section-container">
             <form id="form1">
-                <label for="nome">Telefones</label>
+                <label for="nome">Contato 1</label>
                 <input class="form-control" type="text" name="nome" autocomplete="off" id="inputNumber" />
                 <div id="box" class="box">
                 </div>
@@ -215,7 +215,7 @@
             function createLabel() {
                 var elemento = document.createElement('label');
                 elemento.setAttribute('for', 'nome');
-                elemento.textContent = 'Contato:';
+                elemento.textContent = `Contato: ${contador}`;
                 box.appendChild(elemento);
             }
 
@@ -225,8 +225,10 @@
                 elemento.setAttribute('name', 'nome');
                 elemento.setAttribute('id', 'inputNumber');
                 elemento.setAttribute('autocomplete', 'off');
+                elemento.setAttribute('style', 'border: 1px solid');
                 box.appendChild(elemento);
-                elemento.textContent = 'Contato:';
+                elemento.textContent = "Contato:";
+                console.log(contador);
             }
 
             saver.addEventListener('click', function () {
