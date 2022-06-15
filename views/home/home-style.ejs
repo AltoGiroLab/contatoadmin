@@ -11,22 +11,10 @@
         background-size: 100vw 100vh;
     }
 
-    .table {
-        text-align: center;
-    }
-
+    .table,
+    .tab-col,
     #divList {
         text-align: center;
-    }
-
-    .tab-col {
-        text-align: center;
-    }
-
-    .btns-delete {
-        background: linear-gradient(90deg, #e4113f, #3227ca);
-        color: #FBFBFB;
-        transition: .2s all;
     }
 
     .title-contact {
@@ -49,16 +37,9 @@
         margin-bottom: 40px;
     }
 
-    input {
-        width: calc(100% - 40px);
-        padding: 10px 20px;
-        opacity: .65;
-        margin-top: 5px;
-    }
-
     .add,
     .saver,
-    .btns {
+    .button {
         background: linear-gradient(90deg, #5D54A4, #7C78B8);
         color: #FBFBFB;
         transition: .2s all;
@@ -67,8 +48,19 @@
         align-items: center;
     }
 
-    .btns {
-        background: linear-gradient(90deg, #5D54A4, #7C78B8);
+    .add:hover,
+    .saver:hover,
+    .button:hover,
+    .button-delete:hover {
+        opacity: .8;
+        cursor: pointer;
+        box-shadow: 3px 3px 3px #444;
+    }
+
+    .button-delete {
+        background: linear-gradient(90deg, #e4113f, #3227ca);
+        color: #FBFBFB;
+        transition: .2s all;
     }
 
     .add,
@@ -82,19 +74,16 @@
         display: flex;
     }
 
-    .add:hover,
-    .saver:hover,
-    .btns:hover,
-    .btns-delete:hover {
-        opacity: .8;
-        cursor: pointer;
-        box-shadow: 3px 3px 3px #444;
-    }
-
     .section-container {
-        margin-left: 20px;
         width: 50vh;
         height: 100vh;
+    }
+
+    #inputNumber {
+        width: calc(100% - 40px);
+        padding: 10px 20px;
+        opacity: .65;
+        margin-top: 5px;
     }
 </style>
 </style>

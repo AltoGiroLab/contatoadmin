@@ -97,7 +97,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 12px;
         }
 
         .img {
@@ -116,7 +116,7 @@
             justify-content: center;
         }
 
-        .btns {
+        .button {
             margin: 5px;
             margin-left: 10px;
         }
@@ -228,7 +228,7 @@
         }
 
         .form-control {
-            font-size: 17px;
+            font-size: 12px;
             height: 60px;
             display: flex;
         }
@@ -246,10 +246,6 @@
             font-size: 20px;
         }
 
-        .control-label {
-            font-size: 24px;
-        }
-
         .buttons-container {
             display: flex;
         }
@@ -259,7 +255,6 @@
         #buttonList,
         #buttonClear,
         #buttonDeleted {
-            width: 150px;
             height: 50px;
             margin-left: 10px;
         }
@@ -335,7 +330,6 @@
         }
     }
 
-
     @media (min-width: 1025px) {
 
         * {
@@ -347,11 +341,25 @@
 
         .section-container {
             width: 100%;
+            display: flex;
         }
 
         .table-container {
             width: 100vw;
             font-size: 10px;
+        }
+
+        .social-img {
+            display: flex;
+            width: 100vw;
+            height: 30px;
+            margin-bottom: 15px;
+            margin-left: 5px;
+        }
+
+        .img {
+            margin: 1px;
+            width: 30px;
         }
 
         .navbar-container {
@@ -368,25 +376,32 @@
         }
 
         .nav-search {
-            width: 50vw;
-            margin: 5px;
+            width: 100vw;
+            margin: 2px;
+        }
+
+        .input-search {
+            width: 70vw;
+            margin-left: 4px;
+            padding: 10px;
+            border: 1px solid rgb(177, 164, 164);
+        }
+
+        .buttons-container {
+            height: 100px;
+        }
+
+        .input-group {
+            height: 50px;
         }
 
         .btn-search {
             width: 80px;
             height: 40px;
-            padding: 5px;
-            margin-left: 3px;
-        }
-
-        .input-search {
-            width: 99vw;
-            height: 40px;
-            padding: 5px;
-            margin-left: 3px;
-            opacity: .65;
-            border-color: #4285F4;
-            border: 1px solid;
+            border: 0;
+            border-radius: 3px;
+            background-color: rgba(75, 75, 207, 0.932);
+            color: white;
         }
 
         .form-table {
@@ -403,14 +418,18 @@
             height: 30px;
         }
 
-        .form-container {
+        .wrapper {
             display: grid;
-            grid-template-rows: auto;
+            grid-template-columns: 350px 350px 350px 350px;
+            width: 50vw;
+            height: 50vw;
+            grid-column-gap: 10px;
+            grid-row-gap: 1em;
         }
 
-        .form-control,
-        .control-label {
-            margin-left: 10px;
+
+        .form-control {
+            border-radius: 4px;
         }
 
         .input-group {
@@ -421,18 +440,27 @@
             font-size: 16px;
         }
 
-        .btns,
-        .btns-delete {
+        .buttons,
+        .buttons-delete {
             border: 0;
-            width: 100%;
+            background-color: rgba(75, 75, 207, 0.932);
+            color: white;
             border-radius: 3px;
+            width: 70px;
             height: 20px;
-            margin: 5px;
+            padding: 0;
+            font-size: 14px;
+            margin-top: 17px;
         }
 
         .form {
             width: 600px;
             height: 5px;
+        }
+
+        .add {
+            width: 5px;
+            height: 20px;
         }
     }
 </style>

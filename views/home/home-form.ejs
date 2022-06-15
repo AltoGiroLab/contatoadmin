@@ -21,14 +21,14 @@
     <div class="navbar-container">
         <a href="http://localhost:5020/login"><img src="logos/aglabs-navbar.svg" class="navbar-img" /></a>
     </div>
-    <div>
+    <div class="social-img">
         <a href="https://instagram.com/aglabs.tech?igshid=YmMyMTA2M2Y="><img src="icons/instagram.svg"
                 class="img" /></a>
         <a href="https://www.facebook.com/altogirooficial"><img src="icons/facebook.svg" class="img" /></a>
         <a href="https://br.linkedin.com/company/aglabs"><img src="icons/linkedin.svg" class="img" /></a>
     </div>
     <div class="nav-search">
-        <button onclick="" type="submit" class="btn btn-success btn-search" id="buttonFind">Pesquisar</button>
+        <button onclick="" type="submit" class="btn-search" id="buttonFind">Pesquisar</button>
         <input type="text" class="input-search" placeholder="Pesquisar..." id="inputSearch">
     </div>
 
@@ -54,195 +54,192 @@
         </div>
     </div>
     <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputCode" class="control-label">Código</label>
-        </div>
-        <input type="text" class="form-control" id="inputCode">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputCity" class="control-label">Cidade</label>
-        </div>
-        <input type="text" class="form-control" id="inputCity">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group mb-3">
-        <label for="inputState" class="control-label">Estado</label>
-        <select name="list" class="form-control" onChange="combo(this, 'box')" id="inputState">
-            <option selected value="Acre" disabled>Selecione um estado</option>
-            <option>Acre (AC)</option>
-            <option>Alagoas (AL)</option>
-            <option>Amapá (AP)</option>
-            <option>Amazonas (AM)</option>
-            <option>Bahia (BA)</option>
-            <option>Ceará (CE)</option>
-            <option>Distrito Federal (DF)</option>
-            <option>Espírito Santo (ES)</option>
-            <option>Goiás (GO)</option>
-            <option>Maranhão (MA)</option>
-            <option>Mato Grosso (MT)</option>
-            <option>Mato Grosso do Sul (MS)</option>
-            <option>Minas Gerais (MG)</option>
-            <option>Pará (PA)</option>
-            <option>Paraíba (PB)</option>
-            <option>Paraná (PR)</option>
-            <option>Pernambuco (PE)</option>
-            <option>Piauí (PI)</option>
-            <option>Rio de Janeiro (RJ)</option>
-            <option>Rio Grande do Norte (RN)</option>
-            <option>Rio Grande do Sul (RS)</option>
-            <option>Rondônia (RO)</option>
-            <option>Roraima (RR)</option>
-            <option>Santa Catarina (SC)</option>
-            <option>São Paulo (SP)</option>
-            <option>Sergipe (SE)</option>
-            <option>Tocantins (TO)</option>
-        </select>
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputMall" class="control-label">Shopping</label>
-        </div>
-        <input type="text" class="form-control" id="inputMall">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputAddress" class="control-label">Endereço</label>
-        </div>
-        <input type="text" class="form-control" id="inputAddress">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputEmail" class="control-label">Email</label>
-        </div>
-        <input type="text" class="form-control" id="inputEmail">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputManager" class="control-label">Gerente</label>
-        </div>
-        <input type="text" class="form-control" id="inputManager">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputFace" class="control-label">Facebook</label>
-        </div>
-        <input type="text" class="form-control" id="inputFace">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputInsta" class="control-label">Instagram</label>
-        </div>
-        <input type="text" class="form-control" id="inputInsta">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputNumber" class="control-label">Number</label>
-        </div>
-        <input type="text" class="form-control" id="inputNumber">
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group mb-3">
-        <label for="inputName" class="control-label">Tipo</label>
-        <select name="list" class="form-control" onChance="combo(this, 'box')" id="inputName">
-            <option selected value="0" disabled>Selecione o tipo:</option>
-            <option>Celular</option>
-            <option>Fixo</option>
-        </select>
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group mb-3">
-        <label for="inputCompany" class="control-label">Operadora</label>
-        <select name="list" class="form-control" onChange="combo(this, 'box')" id="inputCompany">
-            <option selected value="0" disabled>Selecione uma operadora:</option>
-            <option>ALGAR</option>
-            <option>CLARO</option>
-            <option>OI</option>
-            <option>SERCOMTEL</option>
-            <option>TIM</option>
-            <option>VIVO</option>
-        </select>
-    </div>
-    <!---------------------------------------------------------------------->
-    <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-            <label for="inputSeller" class="control-label">Vendedor</label>
-        </div>
-        <input type="text" class="form-control" id="inputSeller">
-    </div>
-
-    <section class="section-container">
-        <form id="form1">
-            <h4 class="title-contact">Lista de contatos</h4>
-            <label for="nome">Telefones </label>
-            <input class="form-control" type="text" name="nome" id="inputNumber" autocomplete="off" />
-            <div id="box" class="box">
+    <div class="wrapper">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputCode" class="control-label">Código</label>
             </div>
-        </form>
-        <button id="add" class="add">Adicionar input</button>
-        <!---------------------------------------------------------------------->
-        <div class="buttons-container">
-            <button class="btns" id="buttonSave" onclick="save()">Salvar</button>
-            <button class="btns" id="buttonSearch" onclick="search()">Buscar</button>
-            <button class="btns" id="buttonList" onclick="List()">Listar</button>
-            <button class="btns" id="buttonClear" onclick="clear()">Limpar</button>
-            <button class="btns-delete" id="buttonDeleted" onclick="deleted()">Apagar</button>
+            <input type="text" class="form-control" id="inputCode">
         </div>
-    </section>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputCity" class="control-label">Cidade</label>
+            </div>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <label for="inputState" class="control-label">Estado</label>
+            <select name="list" class="form-control" onChange="combo(this, 'box')" id="inputState">
+                <option selected value="Acre" disabled></option>
+                <option>Acre (AC)</option>
+                <option>Alagoas (AL)</option>
+                <option>Amapá (AP)</option>
+                <option>Amazonas (AM)</option>
+                <option>Bahia (BA)</option>
+                <option>Ceará (CE)</option>
+                <option>Distrito Federal (DF)</option>
+                <option>Espírito Santo (ES)</option>
+                <option>Goiás (GO)</option>
+                <option>Maranhão (MA)</option>
+                <option>Mato Grosso (MT)</option>
+                <option>Mato Grosso do Sul (MS)</option>
+                <option>Minas Gerais (MG)</option>
+                <option>Pará (PA)</option>
+                <option>Paraíba (PB)</option>
+                <option>Paraná (PR)</option>
+                <option>Pernambuco (PE)</option>
+                <option>Piauí (PI)</option>
+                <option>Rio de Janeiro (RJ)</option>
+                <option>Rio Grande do Norte (RN)</option>
+                <option>Rio Grande do Sul (RS)</option>
+                <option>Rondônia (RO)</option>
+                <option>Roraima (RR)</option>
+                <option>Santa Catarina (SC)</option>
+                <option>São Paulo (SP)</option>
+                <option>Sergipe (SE)</option>
+                <option>Tocantins (TO)</option>
+            </select>
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputMall" class="control-label">Shopping</label>
+            </div>
+            <input type="text" class="form-control" id="inputMall">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <label for="inputAddress" class="control-label">Endereço</label>
+            <input type="text" class="form-control" id="inputAddress">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputEmail" class="control-label">Email</label>
+            </div>
+            <input type="text" class="form-control" id="inputEmail">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputManager" class="control-label">Gerente</label>
+            </div>
+            <input type="text" class="form-control" id="inputManager">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputFace" class="control-label">Facebook</label>
+            </div>
+            <input type="text" class="form-control" id="inputFace">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputInsta" class="control-label">Instagram</label>
+            </div>
+            <input type="text" class="form-control" id="inputInsta">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputNumber" class="control-label">Number</label>
+            </div>
+            <input type="text" class="form-control" id="inputNumber">
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <label for="inputName" class="control-label">Tipo</label>
+            <select name="list" class="form-control" onChance="combo(this, 'box')" id="inputName">
+                <option selected value="0" disabled></option>
+                <option>Celular</option>
+                <option>Fixo</option>
+            </select>
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <label for="inputCompany" class="control-label">Operadora</label>
+            <select name="list" class="form-control" onChange="combo(this, 'box')" id="inputCompany">
+                <option selected value="0" disabled></option>
+                <option>ALGAR</option>
+                <option>CLARO</option>
+                <option>OI</option>
+                <option>SERCOMTEL</option>
+                <option>TIM</option>
+                <option>VIVO</option>
+            </select>
+        </div>
+        <!---------------------------------------------------------------------->
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <label for="inputSeller" class="control-label">Vendedor</label>
+            </div>
+            <input type="text" class="form-control" id="inputSeller">
+        </div>
 
-    </div>
-    <script>
-        List();
-    </script>
-    <script>
-        var contador = 1;
-        var btn_add = document.getElementById('add');
-        var form1 = document.getElementById('form1');
-        var box = document.getElementById('box');
+        <section class="section-container">
+            <form id="form1">
+                <label for="nome">Telefones</label>
+                <input class="form-control" type="text" name="nome" autocomplete="off" id="inputNumber" />
+                <div id="box" class="box">
+                </div>
+            </form>
+            <button id="add" class="add">+</button>
+        </section>
+        <section class="section-container">
+            <div class="buttons-container">
+                <button class="buttons" id="buttonSave" onclick="save()">Salvar</button>
+                <button class="buttons" id="buttonSearch" onclick="search()">Buscar</button>
+                <button class="buttons" id="buttonList" onclick="List()">Listar</button>
+                <button class="buttons" id="buttonClear" onclick="clear()">Limpar</button>
+                <button class="buttons-delete" id="buttonDeleted" onclick="deleted()">Apagar</button>
+            </div>
+        </section>
+        <script>
+            List();
+        </script>
+        <script>
+            var contador = 1;
+            var btn_add = document.getElementById('add');
+            var form1 = document.getElementById('form1');
+            var box = document.getElementById('box');
 
-        btn_add.addEventListener('click', function () {
-            contador++;
-            createLabel();
-            createInput();
-        });
+            btn_add.addEventListener('click', function () {
+                contador++;
+                createLabel();
+                createInput();
+            });
 
-        function createLabel() {
-            var elemento = document.createElement('label');
-            elemento.setAttribute('for', 'nome');
-            elemento.textContent = 'Contato:';
-            box.appendChild(elemento);
-        }
+            function createLabel() {
+                var elemento = document.createElement('label');
+                elemento.setAttribute('for', 'nome');
+                elemento.textContent = 'Contato:';
+                box.appendChild(elemento);
+            }
 
-        function createInput() {
-            var elemento = document.createElement('input');
-            elemento.setAttribute('type', 'text');
-            elemento.setAttribute('name', 'nome');
-            elemento.setAttribute('id', 'inputNumber');
-            elemento.setAttribute('autocomplete', 'off');
-            box.appendChild(elemento);
-            elemento.textContent = 'Contato:';
-        }
+            function createInput() {
+                var elemento = document.createElement('input');
+                elemento.setAttribute('type', 'text');
+                elemento.setAttribute('name', 'nome');
+                elemento.setAttribute('id', 'inputNumber');
+                elemento.setAttribute('autocomplete', 'off');
+                box.appendChild(elemento);
+                elemento.textContent = 'Contato:';
+            }
 
-        saver.addEventListener('click', function () {
-            form1.submit();
-        });
+            saver.addEventListener('click', function () {
+                form1.submit();
+            });
 
-        form1.addEventListener('submit', function () {
-            alert(serialize(document.forms[0]));
-        });
+            form1.addEventListener('submit', function () {
+                alert(serialize(document.forms[0]));
+            });
 
-        function serialize(form) { if (!form || form.nodeName !== "FORM") { return } var i, j, q = []; for (i = form.elements.length - 1; i >= 0; i = i - 1) { if (form.elements[i].name === "") { continue } switch (form.elements[i].nodeName) { case "INPUT": switch (form.elements[i].type) { case "text": case "hidden": case "password": case "button": case "reset": case "submit": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break; case "checkbox": case "radio": if (form.elements[i].checked) { q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)) } break; case "file": break }break; case "TEXTAREA": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break; case "SELECT": switch (form.elements[i].type) { case "select-one": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break; case "select-multiple": for (j = form.elements[i].options.length - 1; j >= 0; j = j - 1) { if (form.elements[i].options[j].selected) { q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].options[j].value)) } } break }break; case "BUTTON": switch (form.elements[i].type) { case "reset": case "submit": case "button": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break }break } } return q.join("&") };
+            function serialize(form) { if (!form || form.nodeName !== "FORM") { return } var i, j, q = []; for (i = form.elements.length - 1; i >= 0; i = i - 1) { if (form.elements[i].name === "") { continue } switch (form.elements[i].nodeName) { case "INPUT": switch (form.elements[i].type) { case "text": case "hidden": case "password": case "button": case "reset": case "submit": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break; case "checkbox": case "radio": if (form.elements[i].checked) { q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)) } break; case "file": break }break; case "TEXTAREA": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break; case "SELECT": switch (form.elements[i].type) { case "select-one": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break; case "select-multiple": for (j = form.elements[i].options.length - 1; j >= 0; j = j - 1) { if (form.elements[i].options[j].selected) { q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].options[j].value)) } } break }break; case "BUTTON": switch (form.elements[i].type) { case "reset": case "submit": case "button": q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)); break }break } } return q.join("&") };
 
-    </script>
+        </script>
 </body>
 <script>
 
